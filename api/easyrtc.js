@@ -2807,14 +2807,14 @@ module.exports = {
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         //RequireJS (AMD) build system
-        define('easyrtc',['easyrtc_lang', 'webrtc-adapter', 'socket.io'], factory);
+        define('easyrtc',['easyrtc_lang', 'webrtc-adapter', 'socket.io-client'], factory);
     } else if (typeof module === 'object' && module.exports) {
         //CommonJS build system
-        module.exports = factory(require('easyrtc_lang'), require('webrtc-adapter'), require('socket.io'));
+        module.exports = factory(require('easyrtc_lang'), require('webrtc-adapter'), require('socket.io-client'));
     } else {
         //Vanilla JS, ensure dependencies are loaded correctly
         if (typeof window.io === 'undefined' || !window.io) {
-            throw new Error("easyrtc requires socket.io");
+            throw new Error("easyrtc requires socket.io-client");
         }
         root.easyrtc = factory(window.easyrtc_lang, window.adapter, window.io);
   }
